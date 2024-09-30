@@ -31,12 +31,12 @@ const onSubmit:SubmitHandler<FormFields>= async (data)=>{
   return (
     <>
       <div id="container" className="flex flex-col items-center  w-full ">
-        <h1 className="font-bold mb-7">Sign Up</h1>
+        <h1 className="font-bold mb-7">Log In</h1>
 
         <form action=""  onSubmit={handleSubmit(onSubmit)} className="flex flex-col  gap-7">
          
           <div className="grid w-full  items-center gap-1.5">
-            <Label htmlFor="email" className="text-lg">
+            <Label htmlFor="email" className="text-base">
               Email
             </Label>
             <Input
@@ -44,30 +44,30 @@ const onSubmit:SubmitHandler<FormFields>= async (data)=>{
               id="email"
               {...register('email')}
               placeholder="Email"
-              className="w-[400px] text-xl"
+              className="w-[400px] text-lg placeholder:text-base "
             />
             {errors.email && <div className="text-red-700 text-lg">{errors.email.message}</div>}
           </div>
           <div className="grid w-full  items-center gap-1.5">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-base">Password</Label>
             <div className="flex">
               <Input
                 type={showPassowrd ? "password" : "text"}
                 id="password"
                 {...register('password')}
                 placeholder="password"
-                className=" text-xl"
+                className=" text-lg placeholder:text-base "
               />
 
-              <button
+              <Button
                 onClick={(e) => {
                   setshowPassowrd(!showPassowrd);
                   e.preventDefault();
                 }}
-                className="bg-blue-600 w-10 p-1 flex items-center justify-center rounded-r text-white font-bold"
+                className="bg-blue-600 hover:bg-blue-600 w-10 p-1 flex items-center justify-center rounded-r text-white font-bold"
                 >
                 {showPassowrd ?  <EyeOffIcon />: <EyeIcon /> }
-              </button>
+              </Button>
             </div>
                 {errors.password && <div className="text-red-700 text-lg">{errors.password.message}</div>}
           </div>
@@ -88,7 +88,7 @@ const onSubmit:SubmitHandler<FormFields>= async (data)=>{
           </Button>
         </form>
         <p className="text-lg italic">
-          Alredt Have an Account ?
+          Don't Have an Account ?
           <Link href="/auth/signUp" className="underline">
             SignUp
           </Link>
